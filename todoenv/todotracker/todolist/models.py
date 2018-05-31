@@ -1,0 +1,23 @@
+from django.db import models
+from datetime import datetime
+
+
+# Create your models here.
+class Status(models.Model):
+    stname = models.CharField(max_length=50)
+
+    def __str__(self):
+        return "Status Group : {}".format(self.stname)
+
+
+class TaskItem(models.Model):
+    title = models.CharField(max_length=250)
+    description = models.TextField(blank=True)
+    status = models.ForeignKey(Status, related_name="tasks", on_delete=models.CASCADE)
+    created_date = models.DateTimeField(default=datetime.now(), blank=False)
+    start_date = models.DateTimeField(blank=True, null=True)
+    due_date = models.DateTimeField(blank=True, null=True)
+    completed_date = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return "Task : {}".format(self.title)

@@ -1,0 +1,69 @@
+<div>
+        <a>TODOTRACKER</a>
+        <ul>
+            <li><button ng-click="home()">Home</button></li>
+            <li><button ng-click="alltasks()">All Tasks</button></li>
+            <li><button ng-click="logout()" ng-show="isLoggedIn">Logout</a></li>
+        </ul>
+</div>
+
+<div>
+        <div>
+            <label>From Date : </label>
+            <input type="Date" ng-model="from_date" />
+        </div>
+        <div>
+            <label>To Date : </label>
+            <input type="Date" ng-model="to_date" />
+        </div>
+        <div>
+            <button ng-click="getalltasks(from_date, to_date)">Get Tasks</button>
+        </div>
+</div>
+
+<div ng-show="fetchComplete">
+<div class="userdetails">
+</div>
+<div class="maincontent">
+<div class="statusGroup" ng-repeat="status in getTasksDate">
+    <h3>{{ status.stname }}</h3>
+
+    <span class="show-filters">
+            <button ng-click="showFilters=!showFilters">
+                {{ showFilters ? "Hide" : "Show" }} filters
+            </button>
+    </span>
+
+    <div class="list-sort"
+         ng-show="showFilters">
+        <hr>
+        <table>
+            <tr>
+                <td><label>Sort:</label></td>
+                <td>
+                    <select ng-model="sortBy">
+                        <option value="title">Title</option>
+                        <option value="start_date">Start Date</option>
+                    </select>
+
+                    <input type="checkbox" ng-model="reverse">
+                    <label>Reverse</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Filter: </label></td>
+                <td class="flex"><input type="text" ng-Model="filterBy"/></td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+
+    <ul>
+        <li ng-repeat="task in status.tasks | filter:filterBy | orderBy:sortBy:reverse">
+            <todo-task></todo-task>
+        </li>
+    </ul>
+</div>
+</div>
+</div>

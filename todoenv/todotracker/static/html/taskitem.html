@@ -1,0 +1,29 @@
+<div class="taskitem" ng-hide="edit" ng-click="edit=true">
+    <h4>{{task.title}}</h4>
+    <h6>Started on : {{task.start_date | date : dd.MM.y}}</h6>
+    <h6>Completed on : {{task.completed_date | date : dd.MM.y}}</h6>
+    <h6>Due on : {{task.due_date | date : dd.MM.y}}</h6>
+</div>
+
+<div class="taskitem" ng-show="edit" ng-model-options="modelOptions">
+    <div class="flex">
+        <label><strong>Title: &nbsp;</strong></label>
+        <input type="text" 
+            ng-model="task.title"
+            ng-change="update()" />
+    </div>
+    <textarea ng-model="task.description" 
+            ng-change="update()" 
+            placeholder="Enter a description here...">
+    </textarea>
+    
+    <button ng-click="edit=false">Close</button>
+    <button ng-click="delete()">Delete</button>
+    <div>
+        <Label>Move to:</Label>
+        <select ng-options="status as status.stname for status in data"
+                ng-model = "destStatus"></select>
+        <button ng-click=move()>Move</button>
+
+    </div>
+</div>
