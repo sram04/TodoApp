@@ -19,7 +19,7 @@
         $scope.registerUser = function(){
             Login.registerUser($scope.user)
                     .then(function(){
-                        $scope.registration_success = true;
+                        $scope.registration_success = "Registration Success!";
                         $scope.isRegistered = true;
                     },
                     function(){

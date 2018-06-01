@@ -4,12 +4,17 @@
     angular.module('todotracker', ['ngRoute'])
         .controller('TodoTrackerController', ['$scope', '$http', '$location', 'Login', TodoTrackerController]);
 
-    function TodoTrackerController($scope, $http, $location, Login) {
+    function TodoTrackerController($scope, $http, $location, Login) {  
+        
+        //find a way to get current logged in user and use it
+        //to populate ownerId
+        var ownerId = 0;
         $scope.add = function(status, title, due){
             var task = {
                 status : status.id,
                 title : title,
                 due_date : due,
+                owner : ownerId,
             };
             $http.post('/todotracker/taskitems/', task)
                 .then(function(response){
@@ -22,13 +27,24 @@
             $scope.new_task = '';
         };
         
+        //var userId = Login.loggedinUserId;
         Login.redirectIfNotLoggedIn();
         $scope.data = [];
         $scope.logout = Login.logout;
         $scope.isLoggedIn = Login.isLoggedIn();
+
+        if($scope.isLoggedIn){
+            var currUser = localStorage.currentUser;
+            console.log(currUser);
+            ownerId = JSON.parse(currUser).id;
+            console.log(ownerId);
+        }
+
         $scope.sortBy = 'title';
         $scope.reverse = true;
         $scope.showFilters = false;
+
+        
 
         $scope.home = function(){
             $location.url('/');

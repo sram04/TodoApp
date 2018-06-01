@@ -11,6 +11,7 @@
         this.logout = logout;
         this.redirectIfNotLoggedIn = redirectIfNotLoggedIn;
         this.registerUser = registerUser;
+        this.loggedinUserId = loggedinUserId;
 
         function login(credentials) {
             return $http.post('/auth_api/login/', credentials)
@@ -28,6 +29,10 @@
 
         function isLoggedIn () {
             return !!localStorage.currentUser;
+        }
+
+        function loggedinUserId(){
+            return JSON.parse(localStorage.currentUser).id;         
         }
 
 

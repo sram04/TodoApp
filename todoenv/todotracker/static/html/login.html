@@ -1,20 +1,26 @@
-<form ng-submit="login()">
-    <div>
-        {{login_error}}
-    </div>
-    <div>
-        <label>Username : </label>
-        <input type="text" ng-model="user.username" />
-    </div>
-    <div>
-        <label>Password : </label>
-        <input type="password" ng-model="user.password" />
-    </div>
-    <div>
-        <button type="submit">Login</button>
-    </div>
-    <div>
-        <label>New here? Please Signup</label>
-        <button ng-click=signup()>Signup Now!</button>
-    </div>
-</form>
+<div class="userform">
+    <form ng-submit="login()">
+        <div>
+            {{login_error}}
+        </div>
+
+        <table>
+            <tr>
+                <td><label>Username : </label></td>
+                <td><input type="text" ng-model="user.username" /></td>
+            </tr>
+            <tr>
+                <td><label>Password : </label></td>
+                <td><input type="password" ng-model="user.password" /></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Login</button></td>
+            </tr>
+        </table>
+
+        <div>
+            <label>New here? </label>
+            <button ng-click=signup()>Signup Now!</button>
+        </div>
+    </form>
+</div>
