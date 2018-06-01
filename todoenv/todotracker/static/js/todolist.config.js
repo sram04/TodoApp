@@ -16,6 +16,10 @@
                 templateUrl : '/static/html/login.html',
                 controller : 'LoginController',
             })
+            .when('/register', {
+                templateUrl : '/static/html/registration.html',
+                controller : 'LoginController',
+            })
             .when('/alltasks', {
                 templateUrl : '/static/html/alltasks.html',
                 controller : 'TodoTrackerController',

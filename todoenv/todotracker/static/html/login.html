@@ -1,5 +1,7 @@
 <form ng-submit="login()">
-    <div>{{login_error}}</div>
+    <div>
+        {{login_error}}
+    </div>
     <div>
         <label>Username : </label>
         <input type="text" ng-model="user.username" />
@@ -9,6 +11,10 @@
         <input type="password" ng-model="user.password" />
     </div>
     <div>
-        <button type="submit">Submit</button>
+        <button type="submit">Login</button>
+    </div>
+    <div>
+        <label>New here? Please Signup</label>
+        <button ng-click=signup()>Signup Now!</button>
     </div>
 </form>

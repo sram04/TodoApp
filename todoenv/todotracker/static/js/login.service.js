@@ -10,12 +10,20 @@
         this.isLoggedIn = isLoggedIn;
         this.logout = logout;
         this.redirectIfNotLoggedIn = redirectIfNotLoggedIn;
+        this.registerUser = registerUser;
 
         function login(credentials) {
             return $http.post('/auth_api/login/', credentials)
                 .then(function (response) {
                     localStorage.currentUser = JSON.stringify(response.data);
                 });
+        }
+
+        function registerUser(userdata){
+            return $http.post('/auth_api/register/', userdata)
+                        .then(function(response){
+
+                        })
         }
 
         function isLoggedIn () {

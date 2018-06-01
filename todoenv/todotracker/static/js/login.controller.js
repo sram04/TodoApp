@@ -16,6 +16,21 @@
                     })
         }
 
+        $scope.registerUser = function(){
+            Login.registerUser($scope.user)
+                    .then(function(){
+                        $scope.registration_success = true;
+                        $scope.isRegistered = true;
+                    },
+                    function(){
+                        $scope.registration_error = "Unable to register the user";
+                    })
+        }
+
+        $scope.signup = function(){
+            $location.url('/register');
+        }
+
         if (Login.isLoggedIn()) {
             $location.url('/');
         }

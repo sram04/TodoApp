@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 
@@ -32,3 +33,12 @@ class LogoutView(views.APIView):
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
 
+class RegisterView(views.APIView):
+
+    def post(self, request):
+        user = User.objects.create_user(
+                username = request.data.get("username"),
+                email = request.data.get("emailaddress"),
+                password = request.data.get("password"))
+
+        return Response(UserSerializer(user).data)    
