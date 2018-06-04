@@ -1,33 +1,34 @@
 
-<div class="userform">
-    
+<div class="userform">   
     <div>
-        {{registration_error}}
+        
     </div>
-
-    <table>
-        <tr>
-            <td><label>Username : </label></td>
-            <td><input type="text" ng-model="user.username" /></td>
-        </tr>
-        <tr>
-            <td><label>Email Address : </label></td>
-            <td><input type="text" ng-model="user.emailaddress" /></td>
-        </tr>
-        <tr>
-            <td><label>Password : </label></td>
-            <td><input type="password" ng-model="user.password" /></td>
-        </tr>
-        <tr>
-            <td><button ng-click="registerUser()">Register</button></td>
-        </tr>
-    </table>
-
     <div>
-        <h5>{{registration_success}}</h5>
-    </div>
-
-    <div>
-        <button ng-click="login()" ng-show="isRegistered">Login Here!</button>
+        <table>
+            <tr>
+                <td>{{registration_error}}</td>
+            </tr>
+            <tr>
+                <td><label>Username : </label></td>
+                <td><input type="text" ng-model="user.username" /></td>
+            </tr>
+            <tr>
+                <td><label>Email Address : </label></td>
+                <td><input type="text" ng-model="user.emailaddress" /></td>
+            </tr>
+            <tr>
+                <td><label>Password : </label></td>
+                <td><input type="password" ng-model="user.password" /></td>
+            </tr>
+            <tr>
+                <td><button ng-click="registerUser()">Register</button></td>
+            </tr>
+            <tr>
+                <td><h5>{{registration_success}}</h5></td>
+            </tr>
+            <tr>
+                <td><button ng-click="login()" ng-show="isRegistered">Login Here!</button></td> 
+            </tr>
+        </table>    
     </div>
 </div>

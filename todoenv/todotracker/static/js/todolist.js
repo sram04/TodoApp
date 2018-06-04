@@ -9,11 +9,12 @@
         //find a way to get current logged in user and use it
         //to populate ownerId
         var ownerId = 0;
+        $scope.ownerName = "";
         $scope.add = function(status, title, due){
             var task = {
                 status : status.id,
                 title : title,
-                due_date : due,
+                due_date : new Date(due),
                 owner : ownerId,
             };
             $http.post('/todotracker/taskitems/', task)
@@ -38,6 +39,8 @@
             console.log(currUser);
             ownerId = JSON.parse(currUser).id;
             console.log(ownerId);
+            $scope.ownerName = JSON.parse(currUser).username;
+            console.log($scope.ownerName);
         }
 
         $scope.sortBy = 'title';
@@ -90,14 +93,6 @@
             }
 
             $scope.getTasksDate = testData;
-            /*for(var eachStatus in $scope.getTasksDate)
-            {
-                var tasks = eachStatus.tasks;
-                var validtasks = tasks.forEach(element => { 
-                    element.created_date >= fromDate && element.created_date <= toDate               
-                });
-                eachStatus.tasks = validtasks;
-            }*/
 
             $scope.fetchComplete = true;
         };

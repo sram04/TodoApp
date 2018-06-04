@@ -16,6 +16,12 @@
             ng-change="update()" 
             placeholder="Enter a description here...">
     </textarea>
+    <div>
+            <label><strong>Due Date: &nbsp;</strong></label>
+            <input type="date" 
+                ng-model="task.due_date"
+                ng-change="update()" />
+    </div>
     
     <button ng-click="edit=false">Close</button>
     <button ng-click="delete()">Delete</button>

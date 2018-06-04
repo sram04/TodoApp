@@ -1,0 +1,29 @@
+.sidenav {
+    overflow: hidden;
+    background-color: #111;
+}
+
+.sidenav a {
+    float: left;
+    color:#818181;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav h4 {
+    float : right;
+    color : white;
+}
+
+.main {
+    /*margin-left: 160px; /* Same as the width of the sidenav */
+    /*padding: 0px 10px;*/
+    width : 100%;
+}

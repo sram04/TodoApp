@@ -1,24 +1,20 @@
-<div>
-        <a>TODOTRACKER</a>
-        <ul>
-            <li><button ng-click="home()">Home</button></li>
-            <li><button ng-click="alltasks()">All Tasks</button></li>
-            <li><button ng-click="logout()" ng-show="isLoggedIn">Logout</a></li>
-        </ul>
+<div class="sidenav" ng-include="'static/html/navbar.html'">
 </div>
-
+<div class="main">
 <div>
-        <div>
-            <label>From Date : </label>
-            <input type="Date" ng-model="from_date" />
-        </div>
-        <div>
-            <label>To Date : </label>
-            <input type="Date" ng-model="to_date" />
-        </div>
-        <div>
-            <button ng-click="getalltasks(from_date, to_date)">Get Tasks</button>
-        </div>
+    <table>
+        <tr>
+            <td><label>From Date : </label></td>
+            <td><input type="Date" ng-model="from_date" /></td>
+        </tr>
+        <tr>
+            <td><label>To Date : </label></td>
+            <td><input type="Date" ng-model="to_date" /></td>
+        </tr>
+        <tr>
+            <td><button ng-click="getalltasks(from_date, to_date)">Get Tasks</button></td>
+        </tr>
+    </table>
 </div>
 
 <div ng-show="fetchComplete">
@@ -64,6 +60,7 @@
             <todo-task></todo-task>
         </li>
     </ul>
+</div>
 </div>
 </div>
 </div>

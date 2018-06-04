@@ -4,11 +4,16 @@
     <head>
         <link rel="stylesheet" type="text/css"
             href="{% static "css/todotracker.css" %}">
+            <link rel="stylesheet" type="text/css"
+            href="{% static "css/sidenav.css" %}">    
     </head>
 
     <body ng-app="todotracker">
+        <div class="banner">
+            <h2>TODO TRACKER</h2>
+        </div>
         <ng-view></ng-view>
-
+        
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-route.js"></script>
         <script src="{% static "js/todolist.js" %}"></script>
