@@ -36,9 +36,21 @@ class LogoutView(views.APIView):
 class RegisterView(views.APIView):
 
     def post(self, request):
+        
+        newUsername = request.data.get("username")
+        currentUsers = User.objects.filter(username = newUsername)
+        
+        if len(currentUsers) > 0:
+            return Response({
+                'status': 'Unauthorized',
+                'message': 'username - {0} is already taken'.format(newUsername)
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        
         user = User.objects.create_user(
-                username = request.data.get("username"),
+                username = newUsername,
                 email = request.data.get("emailaddress"),
                 password = request.data.get("password"))
+        
 
         return Response(UserSerializer(user).data)    

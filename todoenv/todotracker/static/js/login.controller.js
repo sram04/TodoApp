@@ -22,8 +22,9 @@
                         $scope.registration_success = "Registration Success!";
                         $scope.isRegistered = true;
                     },
-                    function(){
-                        $scope.registration_error = "Unable to register the user";
+                    function(response){
+                        //$scope.registration_error = "Unable to register the user";
+                        $scope.registration_error = response.data.message;
                     })
         }
 
