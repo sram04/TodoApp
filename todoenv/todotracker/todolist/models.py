@@ -19,6 +19,7 @@ class TaskItem(models.Model):
     start_date = models.DateTimeField(blank=True, null=True)
     due_date = models.DateTimeField(blank=True, null=True)
     completed_date = models.DateTimeField(blank=True, null=True)
+    archived = models.BooleanField(default=False, blank=False)
 
     def __str__(self):
         return "Task : {}".format(self.title)

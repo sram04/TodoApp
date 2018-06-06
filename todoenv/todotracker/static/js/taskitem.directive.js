@@ -56,6 +56,11 @@
                     );
                 };
 
+                $scope.archive = function(){
+                    $scope.task.archived = true;
+                    $scope.update()
+                };
+
                 $scope.move = function(){
                     if($scope.destStatus == undefined)
                     {

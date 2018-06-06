@@ -22,14 +22,15 @@
                 ng-model="task.due_date"
                 ng-change="update()" />
     </div>
-    
-    <button ng-click="edit=false">Close</button>
-    <button ng-click="delete()">Delete</button>
+        <button ng-click="edit=false" class="btn btn-default">Close</button>
+        <button ng-click="delete()" class="btn btn-default">Delete</button>
+        <button ng-click="archive()" class="btn btn-default">Archive</button>
     <div>
         <Label>Move to:</Label>
         <select ng-options="status as status.stname for status in data"
                 ng-model = "destStatus"></select>
-        <button ng-click=move()>Move</button>
+        <button ng-click=move() class="btn btn-default">Move</button>
 
     </div>
+    
 </div>

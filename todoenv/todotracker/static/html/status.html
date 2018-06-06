@@ -5,7 +5,7 @@
     <h3>{{ status.stname }}</h3>
 
     <span class="show-filters">
-            <button ng-click="showFilters=!showFilters">
+            <button class = "btn btn-default" ng-click="showFilters=!showFilters">
                 {{ showFilters ? "Hide" : "Show" }} filters
             </button>
     </span>
@@ -50,7 +50,7 @@
             <td><input type="date" ng-model="task_due" /></td>   
         </tr>
         <tr>
-            <td><button ng-click="add(status, task_title, task_due)">Add</button></td>
+            <td><button ng-click="add(status, task_title, task_due)" class="btn btn-default">Add</button></td>
         </tr>
     </table>
 </div>

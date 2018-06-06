@@ -26,4 +26,5 @@
     /*margin-left: 160px; /* Same as the width of the sidenav */
     /*padding: 0px 10px;*/
     width : 100%;
+    border: 1px solid grey;
 }

@@ -1,32 +1,41 @@
 
-<div class="userform">   
-    <div>
+<div class="container">   
+    
+    <form ng-submit="registerUser()" class="form-horizontal">
         
-    </div>
-    <div>
-        <h4>{{registration_error}}</h4>
-        <table>
-            <tr>
-                <td><label>Username : </label></td>
-                <td><input type="text" ng-model="user.username" /></td>
-            </tr>
-            <tr>
-                <td><label>Email Address : </label></td>
-                <td><input type="text" ng-model="user.emailaddress" /></td>
-            </tr>
-            <tr>
-                <td><label>Password : </label></td>
-                <td><input type="password" ng-model="user.password" /></td>
-            </tr>
-            <tr>
-                <td><button ng-click="registerUser()">Register</button></td>
-            </tr>
-            <tr>
-                <td><h5>{{registration_success}}</h5></td>
-            </tr>
-            <tr>
-                <td><button ng-click="login()" ng-show="isRegistered">Login Here!</button></td> 
-            </tr>
-        </table>    
-    </div>
+        <div class="alert alert-danger col-sm-offset-2" ng-show="registration_failed">
+            <h4>{{registration_error}}</h4>
+        </div>
+            
+        <div class="alert alert-success col-sm-offset-2" ng-show="isRegistered">
+            <h5>{{registration_success}} <button ng-click="login()" ng-show="isRegistered" class="btn btn-link">Login Now!</button> </h5> 
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4">Username : </label>
+            <div class="col-sm-6">
+                <input type="text" ng-model="user.username" class="form-control col-sm-6" />
+            </div>    
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4">Email Address : </label>
+            <div class="col-sm-6">
+                <input class="form-control" type="text" ng-model="user.emailaddress" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4">Password : </label>
+            <div class="col-sm-6">
+                <input class="form-control" type="password" ng-model="user.password" />
+            </div>
+        </div>
+
+        <div class="col-sm-offset-4 col-sm-6">
+            <button type="submit" class="btn btn-default">Register</button>
+        </div>
+  
+    </form>
+
 </div>
