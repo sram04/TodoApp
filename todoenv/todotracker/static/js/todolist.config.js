@@ -24,6 +24,10 @@
                 templateUrl : '/static/html/alltasks.html',
                 controller : 'TodoTrackerController',
             })
+            .when('/archived', {
+                templateUrl : '/static/html/archived.html',
+                controller : 'TodoTrackerController',
+            })
             .otherwise('/');
     }
 

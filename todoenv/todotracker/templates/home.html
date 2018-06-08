@@ -11,10 +11,21 @@
     </head>
 
     <body ng-app="todotracker">
-        <div class="banner">
-            <h2>TODO TRACKER</h2>
+        <div class="container-fluid">
+            <div class="jumbotron">
+                <h1 align="center">TODO TRACKER  <span class="glyphicon glyphicon-list-alt"></span></h1> 
+            </div>
         </div>
-        <ng-view></ng-view>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <ng-view></ng-view>
+            </div>
+        </div>
+        
+        <footer class="page-footer">
+            <div class="footer-copyright text-center py-3">© 2018 Copyright: RICO</div>
+        </footer>
         
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular-route.js"></script>

@@ -13,9 +13,15 @@
                 $scope.isComplete = $scope.task.completed_date;
                 $scope.isStarted = $scope.task.start_date;
                 $scope.destStatus = $scope.status; 
+                $scope.isArchived = false;
 
                 function removeTaskFromStatus(task, status){
                     var tasks = status.tasks;
+                    tasks.splice(tasks.indexOf(task), 1);
+                };
+
+                function removeTaskFromArchived(task, status){
+                    var tasks = status.archived;
                     tasks.splice(tasks.indexOf(task), 1);
                 };
 
@@ -58,7 +64,18 @@
 
                 $scope.archive = function(){
                     $scope.task.archived = true;
-                    $scope.update()
+                    $scope.update().then(function(){
+                        removeTaskFromStatus($scope.task, $scope.status);
+                        $scope.status.archived.push($scope.task);
+                    })
+                };
+
+                $scope.restore = function(){
+                    $scope.task.archived = false;
+                    $scope.update().then(function(){
+                        removeTaskFromArchived($scope.task, $scope.status);
+                        $scope.status.tasks.push($scope.task);
+                    })
                 };
 
                 $scope.move = function(){

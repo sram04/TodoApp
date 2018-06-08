@@ -1,57 +1,58 @@
-<div class="sidenav" ng-include="'static/html/navbar.html'">
-</div>
-<div class="main">
-<div class="statusGroup" ng-repeat="status in data">
-    <h3>{{ status.stname }}</h3>
+<div ng-include="'static/html/navbar.html'"></div>
 
-    <span class="show-filters">
-            <button class = "btn btn-default" ng-click="showFilters=!showFilters">
-                {{ showFilters ? "Hide" : "Show" }} filters
-            </button>
-    </span>
+<div class="container-fluid">
 
-    <div class="list-sort"
-         ng-show="showFilters">
-        <hr>
+    <div class="col-md-3 statusgrp" ng-repeat="status in data">
+        <h3>{{ status.stname }}</h3>
+
+        <span class="show-filters">
+                <button class = "btn btn-default" ng-click="showFilters=!showFilters">
+                    {{ showFilters ? "Hide" : "Show" }} filters
+                </button>
+        </span>
+
+        <div class="list-sort"
+            ng-show="showFilters">
+            <hr>
+            <table>
+                <tr>
+                    <td><label>Sort:</label></td>
+                    <td>
+                        <select ng-model="sortBy">
+                            <option value="title">Title</option>
+                            <option value="start_date">Start Date</option>
+                        </select>
+
+                        <input type="checkbox" ng-model="reverse">
+                        <label>Reverse</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label>Filter: </label></td>
+                    <td class="flex"><input type="text" ng-Model="filterBy"/></td>
+                </tr>
+            </table>
+            <hr>
+        </div>
+
+        <ul>
+            <li ng-repeat="task in status.tasks | filter:filterBy | orderBy:sortBy:reverse">
+                <todo-task></todo-task>
+            </li>
+        </ul>
         <table>
             <tr>
-                <td><label>Sort:</label></td>
-                <td>
-                    <select ng-model="sortBy">
-                        <option value="title">Title</option>
-                        <option value="start_date">Start Date</option>
-                    </select>
-
-                    <input type="checkbox" ng-model="reverse">
-                    <label>Reverse</label>
-                </td>
+                <td><label>Title:</label></td>
+                <td><input type="text" ng-model="task_title" /></td>
             </tr>
-
             <tr>
-                <td><label>Filter: </label></td>
-                <td class="flex"><input type="text" ng-Model="filterBy"/></td>
+                <td><label>Due Date:</label></td>
+                <td><input type="date" ng-model="task_due" /></td>   
+            </tr>
+            <tr>
+                <td><button ng-click="add(status, task_title, task_due)" class="btn btn-default">Add</button></td>
             </tr>
         </table>
-        <hr>
     </div>
-
-    <ul>
-        <li ng-repeat="task in status.tasks | filter:filterBy | orderBy:sortBy:reverse">
-            <todo-task></todo-task>
-        </li>
-    </ul>
-    <table>
-        <tr>
-            <td><label>Title:</label></td>
-            <td><input type="text" ng-model="task_title" /></td>
-        </tr>
-        <tr>
-            <td><label>Due Date:</label></td>
-            <td><input type="date" ng-model="task_due" /></td>   
-        </tr>
-        <tr>
-            <td><button ng-click="add(status, task_title, task_due)" class="btn btn-default">Add</button></td>
-        </tr>
-    </table>
-</div>
 </div>

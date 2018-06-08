@@ -92,3 +92,15 @@ ul {
     display: flex;
     justify-content: center;
 }
+
+.statusgrp {
+    background-color: darkseagreen;
+    border: black;
+    border-style: solid;
+}
+
+.panel-footer {
+    background-color: black;
+    text-decoration-color: white;
+    text-align: center;
+}

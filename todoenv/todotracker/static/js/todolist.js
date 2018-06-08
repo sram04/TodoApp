@@ -6,10 +6,9 @@
 
     function TodoTrackerController($scope, $http, $location, Login) {  
         
-        //find a way to get current logged in user and use it
-        //to populate ownerId
         var ownerId = 0;
         $scope.ownerName = "";
+
         $scope.add = function(status, title, due){
             var task = {
                 status : status.id,
@@ -31,6 +30,8 @@
         //var userId = Login.loggedinUserId;
         Login.redirectIfNotLoggedIn();
         $scope.data = [];
+        $scope.getTasksDate = [];
+        $scope.archivedTasks = [];
         $scope.logout = Login.logout;
         $scope.isLoggedIn = Login.isLoggedIn();
 
@@ -45,9 +46,7 @@
 
         $scope.sortBy = 'title';
         $scope.reverse = true;
-        $scope.showFilters = false;
-
-        
+        $scope.showFilters = false;        
 
         $scope.home = function(){
             $location.url('/');
@@ -61,14 +60,13 @@
 
         $http.get('/todotracker/status/').then(function(response){
             $scope.data = response.data;
+            $scope.getTasksDate = $scope.data;
+            $scope.archivedTasks = $scope.data;
         });
 
-        $scope.getTasksDate = $scope.data
+        
         
         $scope.getalltasks = function(fromDate, toDate){
-            /*$http.get('/todotracker/status/').then(function(response){
-                $scope.filtereddata = response.data;
-            });*/
             var testData = []
             for (var sts in $scope.data)
             {
@@ -90,12 +88,55 @@
                     })
                 }
 
-            }
+            }           
 
             $scope.getTasksDate = testData;
-
             $scope.fetchComplete = true;
         };
+
+        $scope.archived = function(){
+            $location.url('/archived');
+        }
+
+        $scope.resetArchived = function (){
+            $scope.archivedTasks = $scope.data;
+            $scope.archive_error = "";
+        }
+
+        $scope.getarchivedtasks = function(fromDate, toDate){
+
+            if(fromDate && toDate){
+                var testData = []
+                for (var sts in $scope.data)
+                {
+                    var validTasks = [];
+                    var currentStatus = $scope.data[sts];
+                    var tasks = currentStatus.archived;
+                    for(var tsk in tasks){
+                        var createdDate = new Date(tasks[tsk].created_date);
+                        if(createdDate >= new Date(fromDate)  && createdDate <= new Date(toDate))
+                        {
+                            validTasks.push(tasks[tsk]);
+                        }
+                    }
+                    if(validTasks.length > 0){
+                        testData.push({
+                            'id' : currentStatus.id,
+                            'stname' : currentStatus.stname,
+                            'archived' : validTasks
+                        })
+                    }
+
+                }
+
+                $scope.archivedTasks = testData;
+                $scope.archive_error = "";
+            }
+            else{
+                $scope.archive_error = "Filtering Failed. Showing all tasks. Please make sure to fill From Date & To Date fields!"
+                $scope.archivedTasks = $scope.data
+            }
+        }
     }
 
 }());
