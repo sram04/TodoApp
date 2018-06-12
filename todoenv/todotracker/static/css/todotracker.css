@@ -74,6 +74,10 @@ ul {
     resize: vertical;
 }
 
+.taskitem select {
+    color: black;
+}
+
 .logout {
     float : left;
 }

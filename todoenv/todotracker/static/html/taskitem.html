@@ -30,7 +30,8 @@
     <div>
         <Label>Move to:</Label>
         <select ng-options="status as status.stname for status in data"
-                ng-model = "destStatus"></select>
+                ng-model = "destStatus">
+        </select>
         <button ng-click=move() class="btn btn-default">Move</button>
 
     </div>
