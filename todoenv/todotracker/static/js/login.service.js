@@ -23,7 +23,7 @@
         function registerUser(userdata){
             return $http.post('/auth_api/register/', userdata)
                         .then(function(response){
-
+                            
                         })
         }
 

@@ -8,8 +8,7 @@
     function LoginController($scope, $location, Login) {
 
         $scope.loginFailed = false;
-        $scope.isRegistered = false;
-        $scope.registration_failed = false;
+        
 
         $scope.login = function () {
             Login.login($scope.user)
@@ -24,6 +23,8 @@
         }
 
         $scope.registerUser = function(){
+            $scope.isRegistered = false;
+            $scope.registration_failed = false;
             Login.registerUser($scope.user)
                     .then(function(){
                         $scope.registration_success = "Registration Success!";
@@ -34,6 +35,10 @@
                         $scope.registration_error = response.data.message;
                         $scope.registration_failed = true;
                     })
+        }
+
+        $scope.loginPage = function(){
+            $location.url('/login');
         }
 
         $scope.signup = function(){

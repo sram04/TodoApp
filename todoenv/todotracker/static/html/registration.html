@@ -1,34 +1,49 @@
 
-<div class="container">   
+<div class="container-fluid">
+    
+    <div class="col-sm-offset-4">
+        <div class="page-header">
+            <h2>Create a TodoTracker account</h2>
+        </div>
+        <div>
+            <button class="btn btn-link" ng-click="loginPage()">Already a member? Login Now!</a>
+        </div>
+    </div>
+    
+    <div class="alert alert-danger col-sm-offset-4 col-sm-6" ng-show="registration_failed">
+        <h5>{{registration_error}}</h5>
+    </div>
+            
+    <div class="alert alert-success col-sm-offset-4 col-sm-6" ng-show="isRegistered">
+        <h5>{{registration_success}} <button ng-click="login()" ng-show="isRegistered" class="btn btn-link">Login Now!</button></h5> 
+    </div>
     
     <form ng-submit="registerUser()" class="form-horizontal">
-        
-        <div class="alert alert-danger col-sm-offset-2" ng-show="registration_failed">
-            <h4>{{registration_error}}</h4>
-        </div>
-            
-        <div class="alert alert-success col-sm-offset-2" ng-show="isRegistered">
-            <h5>{{registration_success}} <button ng-click="login()" ng-show="isRegistered" class="btn btn-link">Login Now!</button> </h5> 
-        </div>
 
         <div class="form-group">
             <label class="control-label col-sm-4">Username : </label>
             <div class="col-sm-6">
-                <input type="text" ng-model="user.username" class="form-control col-sm-6" />
+                <input type="text" ng-model="user.username" class="form-control col-sm-6" required
+                oninvalid="this.setCustomValidity('Please enter a username')"
+                oninput="setCustomValidity('')" placeholder="Enter a username"/>
             </div>    
         </div>
 
         <div class="form-group">
             <label class="control-label col-sm-4">Email Address : </label>
             <div class="col-sm-6">
-                <input class="form-control" type="text" ng-model="user.emailaddress" />
+                <input class="form-control" type="email" ng-model="user.emailaddress" required
+                oninvalid="this.setCustomValidity('Please enter a valid email address. Example: you@yourdomain.com')"
+                oninput="setCustomValidity('')" placeholder="Enter a valid email address"/>
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label col-sm-4">Password : </label>
             <div class="col-sm-6">
-                <input class="form-control" type="password" ng-model="user.password" />
+                <input class="form-control" type="password" ng-model="user.password" required
+                oninvalid="this.setCustomValidity('Please enter a password')"
+                oninput="setCustomValidity('')" placeholder="Enter password"/>
             </div>
         </div>
 
