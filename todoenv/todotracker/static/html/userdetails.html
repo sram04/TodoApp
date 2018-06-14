@@ -1,0 +1,63 @@
+<div ng-include="'static/html/navbar.html'"></div>
+<div class="container">
+   
+    <div class="page-header">
+        <h2 align="center">Account Details</h2>
+    </div>
+
+    <div>
+        <div class="alert alert-info col-sm-offset-4 col-sm-6">
+            <span>Hello {{currentUserName}}!</span>
+        </div>
+
+        <div class="col-sm-offset-4 col-sm-6">
+            <p><button class="btn btn-primary" ng-click="changePassword=true">Change Password</button></p>
+        </div>
+        
+    </div>
+    
+    <div>
+
+        <form class="form-horizontal" ng-submit="changeUserPassword()" ng-show="changePassword">
+            <div ng-show="passwordChanged">
+                <div class="col-sm-offset-4 col-sm-6 alert alert-success">
+                    <span>{{passwordChangeSuccess}}</span>
+                    <div class="col-sm-offset-4 col-sm-6">
+                        <p><button class="btn btn-link" ng-click=logoutFromChangePass()>Login here!</button></p>
+                    </div>
+                </div>           
+            </div>
+        
+            <div ng-show="passChangeError != ''">
+                <div class="col-sm-offset-4 col-sm-6 alert alert-danger">
+                    <span>Couldnt save the new password. {{passChangeError}}</span>
+                </div> 
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="currPass">Current Password : </label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" 
+                        ng-model="user.currPassword" id="currPass" placeholder="enter your current password"
+                        required oninvalid="this.setCustomValidity('Please enter your current password')"
+                        oninput="setCustomValidity('')"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="newPass">New Password : </label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" 
+                        ng-model="user.newPassword" id="newPass" placeholder="enter your new password"
+                        required oninvalid="this.setCustomValidity('Please enter your new password')"
+                        oninput="setCustomValidity('')"/>
+                </div>
+            </div>
+            <div class="col-sm-offset-4 col-sm-6">
+                <button class="btn btn-success" type="submit">Save</button>
+                <button class="btn btn-danger" type="button" ng-click="closeChangePassword()">Close</button>
+            </div>    
+        </form>
+    </div>
+
+</div>

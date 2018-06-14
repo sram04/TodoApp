@@ -7,10 +7,8 @@
 
     function LoginController($scope, $location, Login) {
 
-        $scope.loginFailed = false;
-        
-
         $scope.login = function () {
+            $scope.loginFailed = false;
             Login.login($scope.user)
                 .then(function () {
                         $location.url('/');
@@ -43,6 +41,10 @@
 
         $scope.signup = function(){
             $location.url('/register');
+        }
+
+        $scope.forgotcredentials = function(){
+            $location.url('/findUser');
         }
 
         if (Login.isLoggedIn()) {
