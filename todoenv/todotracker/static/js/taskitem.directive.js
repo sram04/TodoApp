@@ -78,6 +78,10 @@
                     })
                 };
 
+                /*
+                    Status Ids are hardcoded currently.
+                    need to find a way to move from status to status
+                */
                 $scope.move = function(){
                     if($scope.destStatus == undefined)
                     {

@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('todotracker', ['ngRoute'])
-        .controller('TodoTrackerController', ['$scope', '$http', '$location', 'Login', TodoTrackerController]);
+        .controller('TodoTrackerController', ['$scope', '$http', '$location', 'Login', 'NavigationBar',TodoTrackerController]);
 
-    function TodoTrackerController($scope, $http, $location, Login) {  
+    function TodoTrackerController($scope, $http, $location, Login, NavigationBar) {  
         
         var ownerId = 0;
         $scope.ownerName = "";
@@ -27,7 +27,6 @@
             $scope.new_task = '';
         };
         
-        //var userId = Login.loggedinUserId;
         Login.redirectIfNotLoggedIn();
         $scope.data = [];
         $scope.getTasksDate = [];
@@ -48,13 +47,10 @@
         $scope.reverse = true;
         $scope.showFilters = false;        
 
-        $scope.home = function(){
-            $location.url('/');
-        }
-
-        $scope.alltasks = function(){
-            $location.url('/alltasks');
-        }
+        $scope.home = NavigationBar.home;
+        $scope.alltasks = NavigationBar.allTasks;
+        $scope.archived = NavigationBar.archived;
+        $scope.userDetails = NavigationBar.userDetails;
 
         $scope.fetchComplete = false;
 
@@ -94,9 +90,7 @@
             $scope.fetchComplete = true;
         };
 
-        $scope.archived = function(){
-            $location.url('/archived');
-        }
+        
 
         $scope.resetArchived = function (){
             $scope.archivedTasks = $scope.data;
@@ -137,6 +131,8 @@
                 $scope.archivedTasks = $scope.data
             }
         }
+
+        
     }
 
 }());

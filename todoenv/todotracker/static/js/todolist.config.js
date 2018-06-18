@@ -28,6 +28,14 @@
                 templateUrl : '/static/html/archived.html',
                 controller : 'TodoTrackerController',
             })
+            .when('/findUser', {
+                templateUrl : '/static/html/forgotcredentials.html',
+                controller : 'UsersController',
+            })
+            .when('/userdetails', {
+                templateUrl : '/static/html/userdetails.html',
+                controller : 'UsersController',
+            })
             .otherwise('/');
     }
 
