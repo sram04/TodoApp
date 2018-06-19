@@ -23,4 +23,4 @@ class TaskItemViewSet(ModelViewSet):
         queryset = TaskItem.objects.filter(owner = self.request.user.id)
         return queryset
 
-
+        

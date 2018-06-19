@@ -12,6 +12,7 @@
         this.redirectIfNotLoggedIn = redirectIfNotLoggedIn;
         this.registerUser = registerUser;
         this.loggedinUserId = loggedinUserId;
+        //this.currentLoggedInUser = loggedInUser;
 
         function login(credentials) {
             return $http.post('/auth_api/login/', credentials)
@@ -48,5 +49,19 @@
                 $location.url('/login');
             }
         }
+
+        /*function loggedInUser(){
+            var username = '';
+            if (isLoggedIn()){
+                var currUser = localStorage.currentUser;
+                //console.log(currUser);
+                //ownerId = JSON.parse(currUser).id;
+                //console.log(ownerId);
+                //$scope.ownerName = JSON.parse(currUser).username;
+                //console.log($scope.ownerName);
+                username = JSON.parse(currUser).username;
+            }            
+            return username;
+        }*/
     }
 })();
