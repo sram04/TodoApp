@@ -29,17 +29,35 @@ html {
     color: white;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-}
-
 .taskitem {
     cursor: pointer;
     background-color: #404040;
     padding: 7px;
     margin: 7px 0px;
     color: white;
+}
+
+.task-items {
+    cursor: pointer;
+    background-color: darkgray;
+    width : 100%;
+    padding-bottom: 10px;
+}
+
+.task-items textarea {
+    width : 100%;
+    height : 20px;
+    padding-bottom : 10px;
+}
+
+.status-task-items {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+}
+
+.status-task-item {
+    padding-bottom: 0px;
 }
 
 .taskitem h4 {

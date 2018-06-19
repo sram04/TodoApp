@@ -3,7 +3,7 @@
 
     angular
         .module('todotracker')
-        .controller('UsersController', ['$scope', '$http', '$location','Login', 'NavigationBar' ,UsersController]);
+        .controller('UsersController', ['$scope', '$http', '$location','Login', 'NavigationBar', UsersController]);
 
     function UsersController($scope, $http, $location, Login, NavigationBar) {
 
@@ -31,10 +31,12 @@
                     })
         }
 
-
-        var currUser = localStorage.currentUser;
-        $scope.currentUserName = JSON.parse(currUser).username;
-        console.log($scope.ownerName);
+        if($scope.isLoggedIn){
+            var currUser = localStorage.currentUser;
+            $scope.currentUserName = JSON.parse(currUser).username;
+            $scope.ownerName = $scope.currentUserName;
+            console.log($scope.ownerName);
+        }
 
         $scope.loginPage = function(){
             $location.url('/login')
@@ -60,10 +62,8 @@
             $scope.user.newPassword = '';
             $scope.user.currPassword = '';
         }
-
+        
         $scope.logoutFromChangePass = Login.logout;
-
-
     }
 
 })();

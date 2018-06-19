@@ -7,13 +7,39 @@
         return{
             templateUrl:'static/html/taskitem.html',
             restrict: 'E',
-            controller: ['$scope', '$http', function($scope, $http){
+            controller: ['$scope', '$http', '$uibModal', function($scope, $http, $uibModal){
                 var url = '/todotracker/taskitems/' + $scope.task.id + '/';
 
                 $scope.isComplete = $scope.task.completed_date;
                 $scope.isStarted = $scope.task.start_date;
                 $scope.destStatus = $scope.status; 
                 $scope.isArchived = false;
+
+                var opened = false;
+
+                $scope.editTask = function(){
+
+                    if(opened) return;
+
+                    var modalInstance = $uibModal.open({
+                        templateUrl: '/static/html/editTaskModal.html',
+                        controller : 'EditTaskController',
+                        scope : $scope,
+                    });
+
+                    opened = true;
+                    
+                    modalInstance.result.then(
+                        function (result) {
+                            $scope.result = result;
+                            opened = false;
+                        }, 
+                        function () {
+                            console.log('edit modal closed');
+                            opened = false;
+                        });
+                }   
+
 
                 function removeTaskFromStatus(task, status){
                     var tasks = status.tasks;
@@ -78,6 +104,7 @@
                     })
                 };
 
+                
                 /*
                     Status Ids are hardcoded currently.
                     need to find a way to move from status to status

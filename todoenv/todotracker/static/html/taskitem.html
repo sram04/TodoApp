@@ -1,39 +1,17 @@
-<div class="taskitem" ng-hide="edit" ng-click="edit=true">
-    <h4>{{task.title}}</h4>
-    <h6>Created on : {{task.created_date | date : dd.MM.y}}</h6>
-    <h6>Started on : {{task.start_date | date : dd.MM.y}}</h6>
-    <h6>Completed on : {{task.completed_date | date : dd.MM.y}}</h6>
-    <h6>Due on : {{task.due_date | date : dd.MM.y}}</h6>
-</div>
 
-<div class="taskitem" ng-show="edit" ng-model-options="modelOptions">
-    <div class="flex">
-        <label><strong>Title: &nbsp;</strong></label>
-        <input type="text" 
-            ng-model="task.title"
-            ng-change="update()" />
+<div class="container-fluid">
+    <div class="well">
+        <div>
+            <label>{{task.title}}</label>
+            <div>
+                <button ng-click="editTask()"class="btn btn-primary btn-sm "><span class="glyphicon glyphicon-edit"></button>
+                <button ng-click="delete()" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></button>
+                <button ng-click="archive()" ng-hide="{{task.archived}}" class="btn btn-warning btn-sm"><i class="fa fa-archive"></i></button>
+                <button ng-click="restore()" ng-show="{{task.archived}}" class="btn btn-success btn-sm"><i class="fa fa-window-restore"></i></button>
+            </div>
+            <div class="col-sm-offset-8">
+                <button ng-click="editTask()" class="btn btn-link btn-sm">manage</button>
+            </div>	
+        </div>                      
     </div>
-    <textarea ng-model="task.description" 
-            ng-change="update()" 
-            placeholder="Enter a description here...">
-    </textarea>
-    <div>
-            <label><strong>Due Date: &nbsp;</strong></label>
-            <input type="date" 
-                ng-model="task.due_date"
-                ng-change="update()" />
-    </div>
-        <button ng-click="edit=false" class="btn btn-default">Close</button>
-        <button ng-click="delete()" class="btn btn-default">Delete</button>
-        <button ng-click="archive()" ng-hide="{{task.archived}}" class="btn btn-default">Archive</button>
-        <button ng-click="restore()" ng-show="{{task.archived}}" class="btn btn-default">Restore</button>
-    <div>
-        <Label>Move to:</Label>
-        <select ng-options="status as status.stname for status in data"
-                ng-model = "destStatus">
-        </select>
-        <button ng-click=move() class="btn btn-default">Move</button>
-
-    </div>
-    
-</div>
+</div>    

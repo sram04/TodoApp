@@ -25,7 +25,7 @@
                 <h5>* tasks are filtered based on <strong>Created Date</strong> of a task</h5>
             </div>
         </div>  
-        <div class="form_group" ng-show="{{archive_error}} != ''">
+        <div class="form_group" ng-show="archive_error!= ''">
             <div class="col-sm-offset-2" >
                 <span class="text-danger">{{archive_error}}</span>
             </div>
@@ -33,43 +33,59 @@
     </form>
 </div>    
 
-<div class="container-fluid">
-    <div class="col-md-3 statusgrp" ng-repeat="status in archivedTasks">
-        <h3>{{ status.stname }}</h3>
-        <span class="show-filters">
-                <button class = "btn btn-default" ng-click="showFilters=!showFilters">
-                    {{ showFilters ? "Hide" : "Show" }} filters
-                </button>
-        </span>
-        <div class="list-sort"
-            ng-show="showFilters">
-            <hr>
-            <table>
-                <tr>
-                    <td><label>Sort:</label></td>
-                    <td>
-                        <select ng-model="sortBy">
-                            <option value="title">Title</option>
-                            <option value="start_date">Start Date</option>
-                        </select>
+<div class="row">
+        <div class="col-md-3" ng-repeat="status in archivedTasks">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                        <h4>{{ status.stname }}</h4>
+                </div>
+                <div class="panel-body">
+                    <span class="show-filters">
+                            <button class = "btn btn-default" ng-click="showFilters=!showFilters">
+                                {{ showFilters ? "Hide" : "Show" }} filters
+                            </button>
+                    </span>
 
-                        <input type="checkbox" ng-model="reverse">
-                        <label>Reverse</label>
-                    </td>
-                </tr>
+                    <div class="list-sort"
+                        ng-show="showFilters">
+                        <hr>
+                        <form class="form-horizontal" ng-submit="add(status, task_title)">   
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                    <label class="form-label">Sort:</label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select ng-model="sortBy" class="form-control">
+                                        <option value="title">Title</option>
+                                        <option value="start_date">Start Date</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline"><input type="checkbox" ng-model="reverse">Reverse</label>  
+                                </div>   
+                            </div>                         
+                            <div class="form-group">
+                                <div class="col-sm-2">
+                                    <label class="form-label">Filter:</label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" ng-Model="filterBy" class="form-control"/>
+                                </div>
+                            </div>   
+                        </form>
+                        <hr>
+                    </div>
 
-                <tr>
-                    <td><label>Filter: </label></td>
-                    <td class="flex"><input type="text" ng-Model="filterBy"/></td>
-                </tr>
-            </table>
-            <hr>
+                    <div class="status-task-items">
+                        <div ng-repeat="task in status.archived | filter:filterBy | orderBy:sortBy:reverse">
+                            <div class="status-task-item">
+                                <todo-task></todo-task>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-
-        <ul>
-            <li ng-repeat="task in status.archived | filter:filterBy | orderBy:sortBy:reverse">
-                <todo-task></todo-task>
-            </li>
-        </ul>
     </div>
 </div>

@@ -1,19 +1,18 @@
 (function () {
     'use strict';
 
-    angular.module('todotracker', ['ngRoute'])
-        .controller('TodoTrackerController', ['$scope', '$http', '$location', 'Login', 'NavigationBar',TodoTrackerController]);
+    angular.module('todotracker', ['ngRoute', 'ui.bootstrap'])
+        .controller('TodoTrackerController', ['$scope', '$http','Login', 'NavigationBar',TodoTrackerController]);
 
-    function TodoTrackerController($scope, $http, $location, Login, NavigationBar) {  
+    function TodoTrackerController($scope, $http, Login, NavigationBar) {  
         
         var ownerId = 0;
-        $scope.ownerName = "";
+        $scope.ownerName = '';
 
-        $scope.add = function(status, title, due){
+        $scope.add = function(status, title){
             var task = {
                 status : status.id,
                 title : title,
-                due_date : new Date(due),
                 owner : ownerId,
             };
             $http.post('/todotracker/taskitems/', task)
