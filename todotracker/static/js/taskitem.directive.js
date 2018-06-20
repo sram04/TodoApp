@@ -9,7 +9,25 @@
             restrict: 'E',
             controller: ['$scope', '$http', '$uibModal', function($scope, $http, $uibModal){
                 var url = '/todotracker/taskitems/' + $scope.task.id + '/';
+                $scope.url = url;
 
+                if($scope.task.start_date){
+                    $scope.task.start_date = new Date($scope.task.start_date);
+                    //$scope.task.start_date = moment($scope.task.start_date).format("YYYY-MM-DD HH:mm:ss");
+                } 
+                if($scope.task.created_date){
+                    $scope.task.created_date = new Date($scope.task.created_date);
+                    //$scope.task.created_date = moment($scope.task.created_date).format("YYYY-MM-DD HH:mm:ss");
+                }
+                if($scope.task.completed_date){
+                    $scope.task.completed_date = new Date($scope.task.completed_date);
+                    //$scope.task.completed_date = moment($scope.task.completed_date).format("YYYY-MM-DD HH:mm:ss");
+                }
+                if($scope.task.due_date){
+                    $scope.task.due_date = new Date($scope.task.due_date);
+                    //$scope.task.due_date = moment($scope.task.due_date).format("YYYY-MM-DD HH:mm:ss");
+                }
+                
                 $scope.isComplete = $scope.task.completed_date;
                 $scope.isStarted = $scope.task.start_date;
                 $scope.destStatus = $scope.status; 
@@ -27,11 +45,12 @@
                         scope : $scope,
                     });
 
-                    opened = true;
+                    opened = true;                    
                     
                     modalInstance.result.then(
                         function (result) {
-                            $scope.result = result;
+                            //$scope.result = result;
+                            $scope.task = result;
                             opened = false;
                         }, 
                         function () {
@@ -54,7 +73,7 @@
                 $scope.update = function(){
                    return $http.put(url, 
                                     $scope.task);
-                };
+                }
 
                 $scope.updateStartDate = function(){
                     var today = new Date();
@@ -103,48 +122,6 @@
                         $scope.status.tasks.push($scope.task);
                     })
                 };
-
-                
-                /*
-                    Status Ids are hardcoded currently.
-                    need to find a way to move from status to status
-                */
-                $scope.move = function(){
-                    if($scope.destStatus == undefined)
-                    {
-                        return;        
-                    }
-
-                    var fromStatus = $scope.task.status;
-                    var toStatus = $scope.destStatus.id;
-                    var today = new Date();
-                    
-                    //update start date when going from 1 -> 2
-                    //update completed date when going from 2->3
-                    if(fromStatus == 1)
-                    {
-                        if (toStatus == 2)
-                        {
-                            $scope.task.start_date = today;
-                        }
-                    }
-                    else if (fromStatus == 2)
-                    {
-                        if(toStatus == 3)
-                        {
-                            $scope.task.completed_date = today;
-                        }
-                    }
-
-                    $scope.task.status = $scope.destStatus.id;
-                    $scope.update().then(function(){
-                        {
-                            removeTaskFromStatus($scope.task, $scope.status);
-                            $scope.destStatus.tasks.push($scope.task);
-                        }
-                    });
-
-                }
 
                 $scope.modelOptions = {
                     debounce: 500

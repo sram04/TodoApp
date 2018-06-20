@@ -14,6 +14,7 @@
                 status : status.id,
                 title : title,
                 owner : ownerId,
+                created_date : new Date(),
             };
             $http.post('/todotracker/taskitems/', task)
                 .then(function(response){
