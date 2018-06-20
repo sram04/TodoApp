@@ -1,7 +1,4 @@
-todoenv/todotracker/db.sqlite3
-todoenv/include/*
-todoenv/lib/*
-todoenv/scripts/*
-todoenv/todotracker/auth_api/__pycache__/*
-todoenv/todotracker/todolist/__pycache__/*
-todoenv/todotracker/todolist/migrations/*
+todotracker/db.sqlite3
+todotracker/auth_api/__pycache__/
+todotracker/todolist/__pycache__/
+todotracker/todolist/migrations/
