@@ -14,8 +14,7 @@
                             </button>
                     </span>
 
-                    <div class="list-sort"
-                        ng-show="showFilters">
+                    <div class="list-sort" ng-show="showFilters">
                         <hr>
                         <form class="form-horizontal" ng-submit="add(status, task_title)">   
                             <div class="form-group">
@@ -28,7 +27,7 @@
                                         <option value="start_date">Start Date</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-4">
+                                <div>
                                     <label class="checkbox-inline"><input type="checkbox" ng-model="reverse">Reverse</label>  
                                 </div>   
                             </div>                         
@@ -46,23 +45,21 @@
 
                     <div class="status-task-items">
                         <div ng-repeat="task in status.tasks | filter:filterBy | orderBy:sortBy:reverse">
-                            <div class="status-task-item">
-                                <todo-task></todo-task>
-                            </div>    
+                            <todo-task></todo-task>   
                         </div>
                     </div>
 
-                    <div>
+                    <div class="col-sm-12">
                         <form class="form-horizontal" ng-submit="add(status, task_title)">   
                             <div class="form-group">
-                                <div class="col-sm-8">
+                                <div class="col-sm-9">
                                     <input type="text" class="form-control" 
                                         ng-model="task_title" id="title" placeholder="Enter Task Title"
                                         required oninvalid="this.setCustomValidity('Please enter a task title')"
                                         oninput="setCustomValidity('')"/>
                                 </div>
-                                <div class="col-sm-2">
-                                    <button class="btn btn-default" type="submit">Add Task</button>
+                                <div>
+                                    <button class="btn btn-default btn-sm" type="submit">Add</button>
                                 </div> 
                             </div>    
                         </form>

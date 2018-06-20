@@ -4,14 +4,15 @@
         <div>
             <label>{{task.title}}</label>
             <div>
-                <button ng-click="editTask()"class="btn btn-primary btn-sm "><span class="glyphicon glyphicon-edit"></button>
-                <button ng-click="delete()" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></button>
-                <button ng-click="archive()" ng-hide="{{task.archived}}" class="btn btn-warning btn-sm"><i class="fa fa-archive"></i></button>
-                <button ng-click="restore()" ng-show="{{task.archived}}" class="btn btn-success btn-sm"><i class="fa fa-window-restore"></i></button>
-            </div> 
-            <div class="col-sm-offset-8">
-                <button ng-click="editTask()" class="btn btn-link btn-sm">manage</button>
-            </div>	
+                <button ng-click="editTask()" title="edit" class="btn btn-primary btn-sm ">
+                    <span class="glyphicon glyphicon-edit"></button>
+                <button ng-click="delete()"  title="delete" class="btn btn-danger btn-sm">
+                    <span class="glyphicon glyphicon-remove"></button>
+                <button ng-click="archive()" ng-hide="{{task.archived}}" title="archive" class="btn btn-warning btn-sm">
+                    <i class="fa fa-archive"></i></button>
+                <button ng-click="restore()" ng-show="{{task.archived}}" title="restore" class="btn btn-success btn-sm">
+                    <i class="fa fa-window-restore"></i></button>
+            </div> 	
         </div>                      
     </div>
 </div>    
