@@ -84,8 +84,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'TodoTracker',                      
-        'USER': 'postgres',
-        'PASSWORD': 'rico',
+        'USER': 'tdt_pg',
+        'PASSWORD': 'tdt_pg',
         'HOST': '',
        'PORT': '5432',
     }
