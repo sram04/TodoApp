@@ -16,7 +16,7 @@
 
                     <div class="list-sort" ng-show="showFilters">
                         <hr>
-                        <form class="form-horizontal" ng-submit="add(status, task_title)">   
+                        <form class="form-horizontal">   
                             <div class="form-group">
                                 <div class="col-sm-2">
                                     <label class="form-label">Sort:</label>
@@ -54,12 +54,12 @@
                             <div class="form-group">
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" 
-                                        ng-model="task_title" id="title" placeholder="Enter Task Title"
-                                        required oninvalid="this.setCustomValidity('Please enter a task title')"
+                                        ng-model="task_title" id="title" placeholder="Enter Title"
+                                        required oninvalid="this.setCustomValidity('Please enter title')"
                                         oninput="setCustomValidity('')"/>
                                 </div>
-                                <div>
-                                    <button class="btn btn-default btn-sm" type="submit">Add</button>
+                                <div class="col-sm-3">
+                                    <button class="btn btn-default btn-sm" title="add task" type="submit"><i class="material-icons">note_add</i></button>
                                 </div> 
                             </div>    
                         </form>
