@@ -83,7 +83,7 @@ DATABASES = {
     #}
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ToDoTracker',                      
+        'NAME': 'TodoTracker',                      
         'USER': 'tdt_pg',
         'PASSWORD': 'tdt_pg',
         'HOST': '',
