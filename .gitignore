@@ -2,3 +2,7 @@ todotracker/db.sqlite3
 todotracker/auth_api/__pycache__/
 todotracker/todolist/__pycache__/
 todotracker/todolist/migrations/
+todotracker/auth_api/migrations/
+.vscode
+.idea
+todotracker/dump.json
