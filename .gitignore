@@ -1,8 +1,10 @@
 todotracker/db.sqlite3
 todotracker/auth_api/__pycache__/
 todotracker/todolist/__pycache__/
-todotracker/todolist/migrations/
-todotracker/auth_api/migrations/
+todotracker/todolist/migrations/*
+todotracker/auth_api/migrations/*
+!todotracker/auth_api/migrations/__init__.py
+!todotracker/todolist/migrations/__init__.py
 .vscode
 .idea
 todotracker/dump.json
