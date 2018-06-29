@@ -113,3 +113,19 @@ html {
     text-decoration-color: white;
     text-align: center;
 }
+
+.show-tasks {
+    float: right;
+}
+
+#events-well {
+    background-color: #0ae4f7;
+}
+
+.event-delete{
+    float: right;
+}
+
+.expand-event {
+    cursor: pointer;
+}

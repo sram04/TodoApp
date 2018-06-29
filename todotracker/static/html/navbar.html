@@ -1,19 +1,17 @@
-<div class="container-fluid">
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                    <button class="navbar-brand btn btn-link" ng-click="home()">TODOTRACKER</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><button class="btn btn-link" ng-click="home()">Home</button></li>
-                <li><button class="btn btn-link" ng-click="alltasks()">All Tasks</button></li>
-                <li><button class="btn btn-link" ng-click="archived()">Archived</button></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><button class="btn btn-link" ng-click="userDetails()">Hello {{ownerName}}</button></li>
-                <li><button class="btn btn-link" ng-click="logout()" ng-show="isLoggedIn">Logout</button>></li>
-            </ul>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+                <button class="navbar-brand btn btn-link" ng-click="home()">TODOTRACKER</a>
         </div>
-    </nav>
-</div>
+        <ul class="nav navbar-nav">
+            <li><button class="btn btn-link" ng-click="home()">Home</button></li>
+            <li><button class="btn btn-link" ng-click="alltasks()">All Tasks</button></li>
+            <li><button class="btn btn-link" ng-click="archived()">Archived</button></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><button class="btn btn-link" ng-click="userDetails()">Hello {{ownerName}}</button></li>
+            <li><button class="btn btn-link" ng-click="logout()" ng-show="isLoggedIn">Logout</button>></li>
+        </ul>
+    </div>
+</nav>
     

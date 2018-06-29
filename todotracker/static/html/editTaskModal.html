@@ -52,7 +52,7 @@
                 <div>
                     <label class="control-label col-sm-4">Status:</label>
                     <div class="col-sm-8">
-                        <select ng-options="status as status.stname for status in data"
+                        <select ng-options="status as status.stname for status in event.status_list"
                             ng-model = "destStatus"
                             class="form-control">
                         </select>

@@ -10,6 +10,15 @@ class Status(models.Model):
         return "Status Group : {}".format(self.stname)
 
 
+class Event(models.Model):
+    name = models.CharField(max_length=100)
+    description =  models.TextField(blank=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "Event : {}".format(self.name)
+
+
 class TaskItem(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
@@ -20,6 +29,8 @@ class TaskItem(models.Model):
     due_date = models.DateTimeField(blank=True, null=True)
     completed_date = models.DateTimeField(blank=True, null=True)
     archived = models.BooleanField(default=False, blank=False)
+    event = models.ForeignKey(Event, related_name="events", on_delete=models.CASCADE)
+
 
     def __str__(self):
         return "Task : {}".format(self.title)

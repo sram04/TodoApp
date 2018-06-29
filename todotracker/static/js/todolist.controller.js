@@ -8,13 +8,15 @@
         
         var ownerId = 0;
         $scope.ownerName = '';
+        
 
-        $scope.add = function(status, title){
+        $scope.add = function(status, title, event){
             var task = {
                 status : status.id,
                 title : title,
                 owner : ownerId,
                 created_date : new Date(),
+                event : event.id,
             };
             $http.post('/todotracker/taskitems/', task)
                 .then(function(response){
@@ -26,6 +28,34 @@
                 
             $scope.new_task = '';
         };
+
+        $scope.addEvent = function(event){
+            var newEvent = {
+                name : event.name,
+                owner : ownerId,
+            };
+            $http.post('/todotracker/events/', newEvent)
+                .then(function(response){
+                    $scope.events.push(response.data);
+                },
+                function(){
+                    alert('could not create an event!')
+                });
+                
+        };
+
+        function removeEvent(event, events){
+            events.splice(events.indexOf(event), 1);
+        }
+
+        $scope.deleteEvent = function(event){
+            var eventurl = '/todotracker/events/' + event.id + '/';
+            $http.delete(eventurl).then(
+                function(){
+                    removeEvent(event, $scope.events);
+                }
+            );
+        }
         
         Login.redirectIfNotLoggedIn();
         $scope.data = [];
@@ -54,13 +84,15 @@
 
         $scope.fetchComplete = false;
 
-        $http.get('/todotracker/status/').then(function(response){
+        /*$http.get('/todotracker/status/').then(function(response){
             $scope.data = response.data;
             $scope.getTasksDate = $scope.data;
             $scope.archivedTasks = $scope.data;
-        });
+        });*/
 
-        
+        $http.get('/todotracker/events/').then(function(response){
+            $scope.events = response.data;
+        });
         
         $scope.getalltasks = function(fromDate, toDate){
             var testData = []

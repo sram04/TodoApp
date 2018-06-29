@@ -9,7 +9,7 @@
 
         $routeProvider
             .when('/', {
-                templateUrl : '/static/html/status.html',
+                templateUrl : '/static/html/events.html',
                 controller : 'TodoTrackerController',
             })
             .when('/login', {

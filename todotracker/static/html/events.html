@@ -1,0 +1,36 @@
+<div ng-include="'static/html/navbar.html'"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div ng-repeat="event in events">
+            <div class="well" id="events-well">
+                <div>
+                    <span class="expand-event" ng-click="showTasks=!showTasks">{{event.name}}</span>
+                    <button ng-click="deleteEvent(event)" title="delete" class="btn btn-danger btn-xs event-delete">
+                        <i class="material-icons" style="font-size:15px">delete</i>
+                    </button>
+                </div>
+            </div>
+            <div ng-show="showTasks" ng-include="'static/html/status.html'"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            <form class="form-horizontal" ng-submit="addEvent(event)">   
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" 
+                            ng-model="event.name" id="title" placeholder="Enter event title"
+                            required oninvalid="this.setCustomValidity('Please enter title')"
+                            oninput="setCustomValidity('')"/>
+                    </div>
+                    <div>
+                        <button class="btn btn-default btn-sm" title="add event" type="submit"><i class="material-icons">note_add</i></button>
+                    </div> 
+                </div>    
+            </form>
+        </div>
+    </div>
+
+</div>
+

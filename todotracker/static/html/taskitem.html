@@ -1,20 +1,17 @@
-
-<div class="container-fluid">
-    <div class="well">
-        <div>
-            <label>{{task.title}}</label>
-            <p>
-                <div>
-                <button ng-click="editTask()" title="edit" class="btn btn-primary btn-xs ">
-                    <i class="material-icons" style="font-size:15px">edit</i></button>
-                <button ng-click="delete()"  title="delete" class="btn btn-danger btn-xs">
-                    <i class="material-icons" style="font-size:15px">delete</i></button>
-                <button ng-click="archive()" ng-hide="{{task.archived}}" title="archive" class="btn btn-warning btn-xs">
-                    <i class="material-icons" style="font-size:15px">archive</i></i></button>
-                <button ng-click="restore()" ng-show="{{task.archived}}" title="restore" class="btn btn-success btn-xs">
-                    <i class="material-icons" style="font-size:15px">restore</i></i></button>
-                </div>
-            </p> 	
-        </div>                      
-    </div>
-</div>    
+<div class="well">
+    <div>
+        <label>{{task.title}}</label>
+        <p>
+            <div>
+            <button ng-click="editTask()" title="edit" class="btn btn-primary btn-xs ">
+                <i class="material-icons" style="font-size:15px">edit</i></button>
+            <button ng-click="delete()"  title="delete" class="btn btn-danger btn-xs">
+                <i class="material-icons" style="font-size:15px">delete</i></button>
+            <button ng-click="archive()" ng-hide="{{task.archived}}" title="archive" class="btn btn-warning btn-xs">
+                <i class="material-icons" style="font-size:15px">archive</i></i></button>
+            <button ng-click="restore()" ng-show="{{task.archived}}" title="restore" class="btn btn-success btn-xs">
+                <i class="material-icons" style="font-size:15px">restore</i></i></button>
+            </div>
+        </p> 	
+    </div>                      
+</div> 
