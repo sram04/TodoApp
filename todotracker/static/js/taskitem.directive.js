@@ -35,6 +35,10 @@
 
                 var opened = false;
 
+                $scope.taskActionsPopover = {
+                    templateUrl: '/static/html/taskActions.html',
+                  };
+
                 $scope.editTask = function(){
 
                     if(opened) return;
@@ -49,7 +53,6 @@
                     
                     modalInstance.result.then(
                         function (result) {
-                            //$scope.result = result;
                             $scope.task = result;
                             opened = false;
                         }, 
@@ -60,7 +63,7 @@
                 }   
 
                 function removeTask(task, taskList){
-                    taskList.splice(tasks.indexOf(task), 1);
+                    taskList.splice(taskList.indexOf(task), 1);
                 };
 
                 $scope.update = function(){
