@@ -7,6 +7,14 @@
 
     function EditTaskController($scope, $http, $uibModalInstance) {
 
+        
+        var currentTaskStatusName = $scope.event.status_list.filter(
+                                    function(element){ 
+                                        return element.id == $scope.task.status; 
+                                    })
+
+        $scope.currentStatus = currentTaskStatusName[0];
+
         $scope.closeEditModal = function(){
             $uibModalInstance.dismiss('cancel');
         }
@@ -24,11 +32,6 @@
          $scope.updateTaskItem = function(){
              return $http.put($scope.url, $scope.task);
          }
-
-        function removeTaskFromStatus(task, status){
-            var tasks = status.tasks;
-            tasks.splice(tasks.indexOf(task), 1);
-        };
 
         /*
             Status Ids are hardcoded currently.
@@ -69,8 +72,6 @@
 
             $scope.task.status = $scope.destStatus.id;
             $scope.updateTaskItem().then(function(){
-                    removeTaskFromStatus($scope.task, $scope.status);
-                    $scope.destStatus.tasks.push($scope.task);
                     $uibModalInstance.close($scope.task);
                 },
                 function(){

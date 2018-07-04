@@ -10,9 +10,9 @@
         $scope.ownerName = '';
         
 
-        $scope.add = function(status, title, event){
+        $scope.addTask = function(title, event){
             var task = {
-                status : status.id,
+                status : 1,
                 title : title,
                 owner : ownerId,
                 created_date : new Date(),
@@ -20,7 +20,7 @@
             };
             $http.post('/todotracker/taskitems/', task)
                 .then(function(response){
-                    status.tasks.push(response.data);
+                    event.task_list.push(response.data);
                 },
                 function(){
                     alert('could not create a task!')

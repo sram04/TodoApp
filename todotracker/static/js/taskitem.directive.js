@@ -59,15 +59,8 @@
                         });
                 }   
 
-
-                function removeTaskFromStatus(task, status){
-                    var tasks = status.tasks;
-                    tasks.splice(tasks.indexOf(task), 1);
-                };
-
-                function removeTaskFromArchived(task, status){
-                    var tasks = status.archived;
-                    tasks.splice(tasks.indexOf(task), 1);
+                function removeTask(task, taskList){
+                    taskList.splice(tasks.indexOf(task), 1);
                 };
 
                 $scope.update = function(){
@@ -80,9 +73,6 @@
                     $scope.task.start_date = today
                     $scope.task.status = 2;
                     $http.put(url, $scope.task).then(function(){
-                        removeTaskFromStatus($scope.task, $scope.status);
-                        assignMovingStatus();
-                        $scope.inProgress.tasks.push($scope.task)
                     });
                     $scope.isStarted = true;
                 };
@@ -92,9 +82,6 @@
                     $scope.task.completed_date = today
                     $scope.task.status = 3;
                     $http.put(url, $scope.task).then(function(){
-                        removeTaskFromStatus($scope.task, $scope.status);
-                        assignMovingStatus();
-                        $scope.done.tasks.push($scope.task);
                     });
                     $scope.isComplete = true
                 };
@@ -102,7 +89,7 @@
                 $scope.delete = function(){
                     $http.delete(url).then(
                         function(){
-                            removeTaskFromStatus($scope.task, $scope.status);
+                            removeTask($scope.task, $scope.event.task_list);
                         }
                     );
                 };
@@ -110,16 +97,16 @@
                 $scope.archive = function(){
                     $scope.task.archived = true;
                     $scope.update().then(function(){
-                        removeTaskFromStatus($scope.task, $scope.status);
-                        $scope.status.archived.push($scope.task);
+                        removeTask($scope.task, $scope.event.task_list);
+                        $scope.event.archived_task_list.push($scope.task);
                     })
                 };
 
                 $scope.restore = function(){
                     $scope.task.archived = false;
                     $scope.update().then(function(){
-                        removeTaskFromArchived($scope.task, $scope.status);
-                        $scope.status.tasks.push($scope.task);
+                        removeTask($scope.task, $scope.event.archived_task_list);
+                        $scope.event.task_list.push($scope.task);
                     })
                 };
 
