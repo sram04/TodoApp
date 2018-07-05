@@ -18,13 +18,13 @@
         <div>
             <form class="form-horizontal" ng-submit="addEvent(event)">   
                 <div class="form-group">
-                    <div class="col-sm-9">
+                    <div class="col-sm-4">
                         <input type="text" class="form-control" 
                             ng-model="event.name" id="title" placeholder="Enter event title"
                             required oninvalid="this.setCustomValidity('Please enter title')"
                             oninput="setCustomValidity('')"/>
                     </div>
-                    <div>
+                    <div div class="col-sm-2">
                         <button class="btn btn-default btn-sm" title="add event" type="submit"><i class="material-icons">note_add</i></button>
                     </div> 
                 </div>    

@@ -3,19 +3,31 @@
         <div class="col-sm-8">
             <label>{{task.title}}</label>
         </div>
-        <div class="col-sm-2">
-            <button ng-click="updateStartDate()" title="Start Task" class="btn btn-primary btn-xs" ng-show="task.status == 1">
-                    <i class="fa fa-hourglass-start" style="font-size:15px"></i>
-            </button>
-            <button ng-click="updateCompletedDate()" title="Mark as complete" class="btn btn-success btn-xs" ng-show="task.status == 2">
-                    <i class="fa fa-calendar-check-o" style="font-size:15px"></i>               
-            </button>
-        </div>
-        <div class="col-sm-2">
-            <button uib-popover-template="taskActionsPopover.templateUrl" popover-placement="right-bottom" 
-                    type="button" class="btn btn-info btn-xs" popover-trigger="'focus'" title="Manage Task">
-                <i class="fa fa-edit" style="font-size:15px"></i>
-            </button>
+
+        <div class="col-sm-4">
+            <div style="float:right;">
+                <i class="fa fa-bolt" ng-show="task.status == 1" 
+                    title="New" style="font-size:15px;padding-top:1px;padding-right:10px"></i>
+                <i class="fa fa-spinner fa-spin" ng-show="task.status == 2" 
+                    title="In Progress" style="font-size:15px;padding-top:1px;padding-right:10px"></i>
+                <i class="fa fa-check-square-o" ng-show="task.status == 3" 
+                    title="Done" style="font-size:15px;color:green;padding-top:1px;padding-right:10px"></i>
+                <i class="fa fa-exclamation-triangle" ng-show="task.status == 4" 
+                    title="Past Due" style="font-size:15px;color:red;padding-top:1px;padding-right:10px"></i>
+                
+                <button ng-click="updateStartDate()" title="Start Task" class="btn btn-primary btn-xs" ng-show="task.status == 1">
+                        <i class="fa fa-hourglass-start" style="font-size:15px"></i>
+                </button>
+
+                <button ng-click="updateCompletedDate()" title="Mark as complete" class="btn btn-success btn-xs" ng-show="task.status == 2">
+                        <i class="fa fa-calendar-check-o" style="font-size:15px"></i>               
+                </button>
+
+                <button uib-popover-template="taskActionsPopover.templateUrl" popover-placement="right-bottom" 
+                        type="button" class="btn btn-info btn-xs" popover-trigger="'focus'" title="Manage Task">
+                    <i class="fa fa-cog" style="font-size:15px"></i>
+                </button>
+            </div>
         </div>
     </div>      	                      
 </div> 
