@@ -3,9 +3,9 @@
 
     angular
         .module('todotracker')
-        .controller('UsersController', ['$scope', '$http', '$location','Login', 'NavigationBar', UsersController]);
+        .controller('UsersController', ['$scope', '$http', '$location','$interval','Login', 'NavigationBar', UsersController]);
 
-    function UsersController($scope, $http, $location, Login, NavigationBar) {
+    function UsersController($scope, $http, $location, $interval,Login, NavigationBar) {
 
         $scope.passChangeError = '';
 
@@ -15,6 +15,12 @@
         $scope.userDetails = NavigationBar.userDetails;
         $scope.logout = Login.logout;
         $scope.isLoggedIn = Login.isLoggedIn();
+
+        $scope.date = new Date();
+
+        $interval(function(){
+            $scope.date = new Date();
+        }, 1000);
 
         $scope.findUser = function(){
             $scope.userNotFound = false;

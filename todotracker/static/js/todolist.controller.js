@@ -2,13 +2,18 @@
     'use strict';
 
     angular.module('todotracker', ['ngRoute', 'ui.bootstrap'])
-        .controller('TodoTrackerController', ['$scope', '$http','Login', 'NavigationBar',TodoTrackerController]);
+        .controller('TodoTrackerController', ['$scope', '$http','$interval','Login','NavigationBar',TodoTrackerController]);
 
-    function TodoTrackerController($scope, $http, Login, NavigationBar) {  
+    function TodoTrackerController($scope, $http, $interval, Login, NavigationBar) {  
         
         var ownerId = 0;
         $scope.ownerName = '';
         
+        $scope.date = new Date();
+
+        $interval(function(){
+            $scope.date = new Date();
+        }, 1000);
 
         $scope.addTask = function(title, event){
             var task = {

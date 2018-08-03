@@ -5,10 +5,12 @@
         </div>
         <ul class="nav navbar-nav">
             <li><button class="btn btn-link" ng-click="home()">Home</button></li>
-            <li><button class="btn btn-link" ng-click="alltasks()">All Tasks</button></li>
-            <li><button class="btn btn-link" ng-click="archived()">Archived</button></li>
+            <li><button class="btn btn-link" ng-click="home()">All Tasks</button></li>
+            <li><button class="btn btn-link" ng-click="home()">Archived</button></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <li><button class="btn btn-link">{{date | date:"EEEE dd.MM.yyyy"}}</button></li>
+            <li><button class="btn btn-link">{{date | date:"HH:mm:ss"}}</button></li>
             <li><button class="btn btn-link" ng-click="userDetails()">Hello {{ownerName}}</button></li>
             <li><button class="btn btn-link" ng-click="logout()" ng-show="isLoggedIn">Logout</button>></li>
         </ul>
