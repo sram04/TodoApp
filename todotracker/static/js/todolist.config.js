@@ -36,6 +36,10 @@
                 templateUrl : '/static/html/userdetails.html',
                 controller : 'UsersController',
             })
+            .when('/rsoccer', {
+                templateUrl : '/static/html/soccernews.html',
+                controller : 'RedditController',
+            })
             .otherwise('/');
     }
 

@@ -86,6 +86,7 @@
         $scope.alltasks = NavigationBar.allTasks;
         $scope.archived = NavigationBar.archived;
         $scope.userDetails = NavigationBar.userDetails;
+        $scope.readRedditSoccer = NavigationBar.readRedditSoccer;
 
         $scope.fetchComplete = false;
 

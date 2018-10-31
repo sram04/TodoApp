@@ -15,6 +15,7 @@
         $scope.userDetails = NavigationBar.userDetails;
         $scope.logout = Login.logout;
         $scope.isLoggedIn = Login.isLoggedIn();
+        $scope.readRedditSoccer = NavigationBar.readRedditSoccer;
 
         $scope.date = new Date();
 

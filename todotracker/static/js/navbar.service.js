@@ -11,17 +11,22 @@
         this.archived = archived;
         this.userDetails = userDetails;
         this.logout = logout;
+        this.readRedditSoccer = readRedditSoccer;
 
         function home (){
             $location.url('/');
         }
 
+        function readRedditSoccer(){
+            $location.url('/rsoccer');
+        }
+
         function allTasks(){
-            $location.url('/alltasks')
+            $location.url('/alltasks');
         }
 
         function archived(){
-            $location.url('/archived')
+            $location.url('/archived');
         }
 
         function userDetails(){
